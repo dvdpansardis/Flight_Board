@@ -1,0 +1,18 @@
+{
+  "name": "flightboard",
+  "description": "flight board system monitoring flights",
+  "main": "index.js",
+  "authors": [
+    "david pansardis"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "angular": "^1.6.5",
+    "bootstrap": "^3.3.7",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47",
+    "at-table": "^1.0.7",
+    "angularjs-modal-service": "*"
+  }
+}

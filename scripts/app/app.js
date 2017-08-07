@@ -1,0 +1,1 @@
+var appFlightBoard = angular.module("appFlightBoard", ['angularModalService']);
