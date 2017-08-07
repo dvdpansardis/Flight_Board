@@ -26,9 +26,9 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalServi
     $scope.clearFilter = function () {
         $scope.filterCodeFlight = ""
 
-        $scope.filterFirstDate = new Date()
+        $scope.filterFirstDate = ""
 
-        $scope.filterLastDate = new Date()
+        $scope.filterLastDate = ""
 
         $scope.filterCityDeparture = ""
 

@@ -113,27 +113,27 @@
                 <div class="col-md-12">
                     <form>
                         <div class="form-group">
-                            <div class="col-md-2">
+                            <div class="col-md-2" style="margin-top:10px">
                                 <label for="codeFlight">Code Flight</label>
                                 <input type="text" class="form-control" ng-model="filterCodeFlight" id="codeFlight" placeholder="1234XY">
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2" style="margin-top:10px">
                                 <label class="mr-sm-2" for="cityDeparture">City Departure</label>
                                 <select ng-model="filterCityDeparture" class="form-control form-control-lg" id="cityDeparture">
                                     <option ng-repeat="city in citysDeparture" value="{{city}}">{{city}}</option>
                                 </select>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2" style="margin-top:10px">
                                 <label class="mr-sm-2" for="cityArrived">City Arrived</label>
                                 <select ng-model="filterCityArrived" class="form-control form-control-lg" id="cityArrived">
                                     <option ng-repeat="city in citysArrived" value="{{city}}">{{city}}</option>
                                 </select>
                             </div>
-                            <div class='col-md-3'>
+                            <!--<div class='col-md-3'>
                                 <div class="form-group">
                                     <label class="mr-sm-3" for="datetimepickerFirstDate">First Date</label>
                                     <div class='input-group date' id='datetimepickerFirstDate' >
-                                        <input type='text' class="form-control" ng-model="filterFirstDate"/>
+                                        <input type='text' class="form-control" id="idfilterBeginDate" ng-model="filterFirstDate"/>
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
@@ -144,14 +144,14 @@
                                 <div class="form-group">
                                     <label class="mr-sm-3" for="datetimepickerLastDate">Last Date</label>
                                     <div class='input-group date' id='datetimepickerLastDate' >
-                                        <input type='text' class="form-control" ng-model="filterLastDate"/>
+                                        <input type='text' class="form-control" id="idfilterLastDate" ng-model="filterLastDate"/>
                                         <span class="input-group-addon" >
                                              <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-2">
+                            </div>-->
+                            <div class="col-md-2" style="margin-top:10px">
                                 <a class="btns btn btn-primary btn-sm" href="#" role="button" ng-click='getSimpleFlightsByFilter()'>Filter &raquo;</a>
                                 <a class="btns btn btn-primary btn-sm" href="#" role="button" ng-click='clearFilter()'>Clear &raquo;</a>
                             </div>
