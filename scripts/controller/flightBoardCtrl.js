@@ -27,20 +27,22 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalServi
 
         var urlRequest = baseUrl + entity + slash;
 
-        $http.post(urlRequest, {
+        filterData = {
             codeFlight : $scope.filterCodeFlight,
             firstData : $scope.filterFirstData,
             lastData : $scope.filterLastData,
             cityDeparture : $scope.filterCityDeparture,
             cityArrived : $scope.filterCityArrived,
-        }).then(function (response) {
+        }
+
+        console.log(filterData);
+
+        $http.post(urlRequest, filterData).then(function (response) {
 
             console.log(response);
 
-            for (var i = 0; i < response.data.length; i++) {
-                $scope.simpleFlights.push(response.data[i]);
-            }
-
+            $scope.simpleFlights = response.data;
+            
         }, function (error) {
 
             console.log("Error on get getSimpleFlightsByFilter: " + error);
@@ -56,10 +58,8 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalServi
 
             console.log(response);
 
-            for (var i = 0; i < response.data.length; i++) {
-                $scope.simpleFlights.push(response.data[i]);
-            }
-
+            $scope.simpleFlights = response.data;
+           
         }, function (error) {
 
             console.log("Error on get getAllSimpleFlights: " + error);
@@ -77,10 +77,10 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalServi
 
         $http.get(urlRequest).then(function (response) {
 
-            for (var i = 0; i < response.data.length; i++) {
-                $scope.citysDeparture.push(response.data[i]);
-            }
+            console.log(response);
 
+            $scope.citysDeparture = response.data;
+            
         }, function (error) {
 
             console.log("Error on get citysDeparture: " + error);
