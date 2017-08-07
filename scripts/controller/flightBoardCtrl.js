@@ -1,4 +1,4 @@
-appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, $rootScope, ModalService, sharedProperties) {
+appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalService, sharedProperties) {
 
     var baseUrl = "http://127.0.0.1:8080/";
     var entity = "Flight";
@@ -17,18 +17,18 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, $rootScope
 
     $scope.filterCodeFlight = ""
 
-    $scope.filterFirstData = ""
+    $scope.filterFirstDate = ""
 
-    $scope.filterLastData = ""
+    $scope.filterLastDate = ""
 
     $scope.simpleFlights = []
 
     $scope.clearFilter = function () {
         $scope.filterCodeFlight = ""
 
-        $scope.filterFirstData = ""
+        $scope.filterFirstDate = new Date()
 
-        $scope.filterLastData = ""
+        $scope.filterLastDate = new Date()
 
         $scope.filterCityDeparture = ""
 
@@ -39,12 +39,12 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, $rootScope
 
     $scope.getSimpleFlightsByFilter = function () {
 
-        var urlRequest = baseUrl + entity + slash;
+        urlRequest = baseUrl + entity + slash;
 
         filterData = {
             codeFlight: $scope.filterCodeFlight,
-            firstData: $scope.filterFirstData,
-            lastData: $scope.filterLastData,
+            firstDate: $scope.filterFirstDate,
+            lastDate: $scope.filterLastDate,
             cityDeparture: $scope.filterCityDeparture,
             cityArrived: $scope.filterCityArrived,
         }
@@ -66,7 +66,7 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, $rootScope
 
     $scope.getAllSimpleFlights = function () {
 
-        var urlRequest = baseUrl + entity + slash;
+        urlRequest = baseUrl + entity + slash;
 
         $http.get(urlRequest).then(function (response) {
 
@@ -87,7 +87,7 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, $rootScope
 
     $scope.getCitysDeparture = function () {
 
-        var urlRequest = baseUrl + entity + slash + 'citysDeparture';
+        urlRequest = baseUrl + entity + slash + 'citysDeparture';
 
         $http.get(urlRequest).then(function (response) {
 
@@ -108,7 +108,7 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, $rootScope
 
     $scope.getCitysArrived = function () {
 
-        var urlRequest = baseUrl + entity + slash + 'citysArrived';
+        urlRequest = baseUrl + entity + slash + 'citysArrived';
 
         $http.get(urlRequest).then(function (response) {
 
@@ -127,7 +127,7 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, $rootScope
 
     $scope.getDescriptionFlightOnModal = function (codeFlight) {
 
-        var urlRequest = baseUrl + entity + slash + codeFlight;
+        urlRequest = baseUrl + entity + slash + codeFlight;
 
         $http.get(urlRequest).then(function (response) {
 
