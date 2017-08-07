@@ -17,7 +17,7 @@
 
 	- First do the installation of Bower on the npm, using the command below.
   
-		`npm bower install`
+		`npm install bower -g`
 	
 	- Next step do the "Clone" of repository on your workspace.
 	
