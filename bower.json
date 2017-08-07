@@ -12,7 +12,6 @@
     "angular": "^1.6.5",
     "bootstrap": "^3.3.7",
     "eonasdan-bootstrap-datetimepicker": "^4.17.47",
-    "at-table": "^1.0.7",
-    "angularjs-modal-service": "*"
+    "at-table": "^1.0.7"
   }
 }

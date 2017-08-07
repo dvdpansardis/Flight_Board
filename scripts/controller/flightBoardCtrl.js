@@ -1,4 +1,4 @@
-appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalService) {
+appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, $rootScope, ModalService, sharedProperties) {
 
     var baseUrl = "http://127.0.0.1:8080/";
     var entity = "Flight";
@@ -23,16 +23,30 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalServi
 
     $scope.simpleFlights = []
 
+    $scope.clearFilter = function () {
+        $scope.filterCodeFlight = ""
+
+        $scope.filterFirstData = ""
+
+        $scope.filterLastData = ""
+
+        $scope.filterCityDeparture = ""
+
+        $scope.filterCityArrived = ""
+
+        $scope.getAllSimpleFlights();
+    }
+
     $scope.getSimpleFlightsByFilter = function () {
 
         var urlRequest = baseUrl + entity + slash;
 
         filterData = {
-            codeFlight : $scope.filterCodeFlight,
-            firstData : $scope.filterFirstData,
-            lastData : $scope.filterLastData,
-            cityDeparture : $scope.filterCityDeparture,
-            cityArrived : $scope.filterCityArrived,
+            codeFlight: $scope.filterCodeFlight,
+            firstData: $scope.filterFirstData,
+            lastData: $scope.filterLastData,
+            cityDeparture: $scope.filterCityDeparture,
+            cityArrived: $scope.filterCityArrived,
         }
 
         console.log(filterData);
@@ -42,7 +56,7 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalServi
             console.log(response);
 
             $scope.simpleFlights = response.data;
-            
+
         }, function (error) {
 
             console.log("Error on get getSimpleFlightsByFilter: " + error);
@@ -59,7 +73,7 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalServi
             console.log(response);
 
             $scope.simpleFlights = response.data;
-           
+
         }, function (error) {
 
             console.log("Error on get getAllSimpleFlights: " + error);
@@ -80,7 +94,7 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalServi
             console.log(response);
 
             $scope.citysDeparture = response.data;
-            
+
         }, function (error) {
 
             console.log("Error on get citysDeparture: " + error);
@@ -100,9 +114,7 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalServi
 
             console.log(response)
 
-            for (var i = 0; i < response.data.length; i++) {
-                $scope.citysArrived.push(response.data[i]);
-            }
+            $scope.citysArrived = response.data;
 
         }, function (error) {
 
@@ -113,17 +125,19 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalServi
 
     $scope.description = ""
 
-    $scope.getDescriptionFlightOnModal = function (codeFlight, modal) {
+    $scope.getDescriptionFlightOnModal = function (codeFlight) {
 
         var urlRequest = baseUrl + entity + slash + codeFlight;
 
         $http.get(urlRequest).then(function (response) {
 
-            console.log(response.data.codeFlight)
+            $scope.description = response.data;
 
-            $scope.description = {flight : response.data};
+            console.log($scope.description)
 
-            modal.element.modal();
+            sharedProperties.setProperty($scope.description)
+
+            $scope.openModal()
 
         }, function (error) {
 
@@ -133,24 +147,43 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalServi
     };
 
     $scope.show = function (codeFlight) {
+        $scope.getDescriptionFlightOnModal(codeFlight)
+    };
+
+    $scope.openModal = function () {
         ModalService.showModal({
             templateUrl: 'modal.html',
-            controller: "ModalController"
+            controller: 'ModalController'
         }).then(function (modal) {
-            $scope.getDescriptionFlightOnModal(codeFlight, modal);
-            modal.close.then(function (result) {
-                //$scope.descriptionFlight = {}
-            });
+            modal.element.modal();
         });
-    };
+    }
 
     $scope.init();
 });
 
-appFlightBoard.controller('ModalController', function ($scope, close) {
+appFlightBoard.controller('ModalController', function ($scope, close, sharedProperties) {
+
+    $scope.codeFlightFiltered = sharedProperties.getProperty().codeFlight
+
+    $scope.gateFiltered = sharedProperties.getProperty().gate
+
+    $scope.statusFiltered = sharedProperties.getProperty().status
+
+    $scope.cityArraivedFiltered = sharedProperties.getProperty().cityArrived
+
+    $scope.cityDepartureFiltered = sharedProperties.getProperty().cityDeparture
+
+    $scope.dateTimeArraivedFiltered = sharedProperties.getProperty().dateTimeArrived
+
+    $scope.dateTimeDepartureFiltered = sharedProperties.getProperty().dateTimeDeparture
+
+    $scope.passangerFiltered = sharedProperties.getProperty().passanger
+
+    $scope.pilotsFiltered = sharedProperties.getProperty().pilots
 
     $scope.close = function (result) {
-        close(result, 500); 
+        close(result, 500);
     };
 
 });

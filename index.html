@@ -34,61 +34,60 @@
                             <button type="button" class="close" ng-click="close('Cancel')" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title">Description Flight</h4>
                         </div>
-                        {{descriptionFlight}}{{codeFlightDesc}}
                         <div class="modal-body">
                             <div class="form-group row">
                                 <label for="codeFlightDescription" class="col-md-4 col-form-label">Code Flight</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" type="text" id="codeFlightDescription" ng-model="description.flight.codeFlight">
+                                    <input class="form-control" type="text" id="codeFlightDescription" ng-model="codeFlightFiltered">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="statusDescription" class="col-md-4 col-form-label">Status</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" type="text" id="statusDescription" ng-model="descriptionFlight.status">
+                                    <input class="form-control" type="text" id="statusDescription" ng-model="statusFiltered">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="gateDescription" class="col-md-4 col-form-label">Gate</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" type="text" id="gateDescription" ng-model="descriptionFlight.gate">
+                                    <input class="form-control" type="text" id="gateDescription" ng-model="gateFiltered">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="passangerDescription" class="col-md-4 col-form-label">Passanger</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" type="text" id="passangerDescription" ng-model="descriptionFlight.passanger">
+                                    <input class="form-control" type="text" id="passangerDescription" ng-model="passangerFiltered">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="cityDepartureDescription" class="col-md-4 col-form-label">City Departure</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" type="text" id="cityDepartureDescription" ng-model="descriptionFlight.cityDeparture">
+                                    <input class="form-control" type="text" id="cityDepartureDescription" ng-model="cityDepartureFiltered">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="cityArraivedDescription" class="col-md-4 col-form-label">City Arrived</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" type="text" id="cityArraivedDescription" ng-model="descriptionFlight.cityArraived">
+                                    <input class="form-control" type="text" id="cityArraivedDescription" ng-model="cityArraivedFiltered">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="dateDepartureDescription" class="col-md-4 col-form-label">Date Departure</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" type="text" id="dateDepartureDescription" ng-model="descriptionFlight.dateTimeDeparture">
+                                    <input class="form-control" type="text" id="dateDepartureDescription" ng-model="dateTimeDepartureFiltered">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="dateArrivedDescription" class="col-md-4 col-form-label">Date Arraived</label>
                                 <div class="col-md-8">
-                                    <input class="form-control" type="text" id="dateArrivedDescription" ng-model="descriptionFlight.dateTimeArraived">
+                                    <input class="form-control" type="text" id="dateArrivedDescription" ng-model="dateTimeArraivedFiltered">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="pilotsDescription" class="col-md-4 col-form-label">Pilots</label>
                                 <div class="col-md-8">
                                     <ul class="list-group" id="pilotsDescription">
-                                        <li class="list-group-item" ng-repeat="pilot in descriptionFlight.pilots">{{pilot.namePilot}} - {{pilot.typePilot}}</li>
+                                        <li class="list-group-item" ng-repeat="pilot in pilotsFiltered">{{pilot.namePilot}} - {{pilot.typePilot}}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -154,6 +153,7 @@
                             </div>
                             <div class="col-md-2">
                                 <a class="btns btn btn-primary btn-sm" href="#" role="button" ng-click='getSimpleFlightsByFilter()'>Filter &raquo;</a>
+                                <a class="btns btn btn-primary btn-sm" href="#" role="button" ng-click='clearFilter()'>Clear &raquo;</a>
                             </div>
                         </div>
                     </form>
