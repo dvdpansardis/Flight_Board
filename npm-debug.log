@@ -1,0 +1,70 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'bower',
+1 verbose cli   '-g' ]
+2 info using npm@3.3.12
+3 info using node@v5.5.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readGlobalPackageData
+7 silly fetchPackageMetaData bower
+8 silly fetchNamedPackageData bower
+9 silly mapToRegistry name bower
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry uri https://registry.npmjs.org/bower
+13 verbose request uri https://registry.npmjs.org/bower
+14 verbose request no auth needed
+15 info attempt registry request try #1 at 08:43:17
+16 verbose request id 98fa3ae8515e1f43
+17 http request GET https://registry.npmjs.org/bower
+18 info retry will retry, error on last attempt: Error: tunneling socket could not be established, cause=socket hang up
+19 info attempt registry request try #2 at 08:43:27
+20 http request GET https://registry.npmjs.org/bower
+21 info retry will retry, error on last attempt: Error: tunneling socket could not be established, cause=socket hang up
+22 info attempt registry request try #3 at 08:44:27
+23 http request GET https://registry.npmjs.org/bower
+24 silly fetchPackageMetaData Error: tunneling socket could not be established, cause=socket hang up
+24 silly fetchPackageMetaData     at ClientRequest.onError (C:\Program Files\nodejs\node_modules\npm\node_modules\request\node_modules\tunnel-agent\index.js:174:17)
+24 silly fetchPackageMetaData     at ClientRequest.g (events.js:273:16)
+24 silly fetchPackageMetaData     at emitOne (events.js:90:13)
+24 silly fetchPackageMetaData     at ClientRequest.emit (events.js:182:7)
+24 silly fetchPackageMetaData     at TLSSocket.socketErrorListener (_http_client.js:262:9)
+24 silly fetchPackageMetaData     at emitOne (events.js:90:13)
+24 silly fetchPackageMetaData     at TLSSocket.emit (events.js:182:7)
+24 silly fetchPackageMetaData     at emitErrorNT (net.js:1255:8)
+24 silly fetchPackageMetaData     at nextTickCallbackWith2Args (node.js:474:9)
+24 silly fetchPackageMetaData     at process._tickCallback (node.js:388:17)
+24 silly fetchPackageMetaData  error for bower { [Error: tunneling socket could not be established, cause=socket hang up] code: 'ECONNRESET' }
+25 silly rollbackFailedOptional Starting
+26 silly rollbackFailedOptional Finishing
+27 silly runTopLevelLifecycles Starting
+28 silly runTopLevelLifecycles Finishing
+29 silly install printInstalled
+30 verbose stack Error: tunneling socket could not be established, cause=socket hang up
+30 verbose stack     at ClientRequest.onError (C:\Program Files\nodejs\node_modules\npm\node_modules\request\node_modules\tunnel-agent\index.js:174:17)
+30 verbose stack     at ClientRequest.g (events.js:273:16)
+30 verbose stack     at emitOne (events.js:90:13)
+30 verbose stack     at ClientRequest.emit (events.js:182:7)
+30 verbose stack     at TLSSocket.socketErrorListener (_http_client.js:262:9)
+30 verbose stack     at emitOne (events.js:90:13)
+30 verbose stack     at TLSSocket.emit (events.js:182:7)
+30 verbose stack     at emitErrorNT (net.js:1255:8)
+30 verbose stack     at nextTickCallbackWith2Args (node.js:474:9)
+30 verbose stack     at process._tickCallback (node.js:388:17)
+31 verbose cwd C:\workspace_david\flightboard
+32 error Windows_NT 6.1.7601
+33 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "bower" "-g"
+34 error node v5.5.0
+35 error npm  v3.3.12
+36 error code ECONNRESET
+37 error network tunneling socket could not be established, cause=socket hang up
+37 error network This is most likely not a problem with npm itself
+37 error network and is related to network connectivity.
+37 error network In most cases you are behind a proxy or have bad network settings.
+37 error network
+37 error network If you are behind a proxy, please make sure that the
+37 error network 'proxy' config is set properly.  See: 'npm help config'
+38 verbose exit [ 1, true ]

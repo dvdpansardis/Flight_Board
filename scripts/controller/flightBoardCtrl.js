@@ -1,6 +1,8 @@
 appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalService) {
 
     var baseUrl = "http://127.0.0.1:8080/";
+    var entity = "Flight";
+    var slash = "/"
 
     $scope.init = function () {
         $scope.getAllSimpleFlights();
@@ -23,7 +25,7 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalServi
 
     $scope.getSimpleFlightsByFilter = function () {
 
-        var urlRequest = baseUrl + 'Flight/';
+        var urlRequest = baseUrl + entity + slash;
 
         $http.post(urlRequest, {
             codeFlight : $scope.filterCodeFlight,
@@ -41,14 +43,14 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalServi
 
         }, function (error) {
 
-            console.log("Error on get citysDeparture: " + error);
+            console.log("Error on get getSimpleFlightsByFilter: " + error);
 
         });
     };
 
     $scope.getAllSimpleFlights = function () {
 
-        var urlRequest = baseUrl + 'Flight/';
+        var urlRequest = baseUrl + entity + slash;
 
         $http.get(urlRequest).then(function (response) {
 
@@ -60,7 +62,7 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalServi
 
         }, function (error) {
 
-            console.log("Error on get citysDeparture: " + error);
+            console.log("Error on get getAllSimpleFlights: " + error);
 
         });
     };
@@ -71,7 +73,7 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalServi
 
     $scope.getCitysDeparture = function () {
 
-        var urlRequest = baseUrl + 'Flight/citysDeparture';
+        var urlRequest = baseUrl + entity + slash + 'citysDeparture';
 
         $http.get(urlRequest).then(function (response) {
 
@@ -92,7 +94,7 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalServi
 
     $scope.getCitysArrived = function () {
 
-        var urlRequest = baseUrl + 'Flight/citysArrived';
+        var urlRequest = baseUrl + entity + slash + 'citysArrived';
 
         $http.get(urlRequest).then(function (response) {
 
@@ -109,23 +111,23 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalServi
         });
     };
 
-    $scope.descriptionFlight = ""
+    $scope.description = ""
 
     $scope.getDescriptionFlightOnModal = function (codeFlight, modal) {
 
-        var urlRequest = baseUrl + 'Flight/' + codeFlight;
+        var urlRequest = baseUrl + entity + slash + codeFlight;
 
         $http.get(urlRequest).then(function (response) {
 
             console.log(response.data.codeFlight)
 
-            $scope.descriptionFlight = response.data;
+            $scope.description = {flight : response.data};
 
             modal.element.modal();
 
         }, function (error) {
 
-            console.log("Error on get citysArrived: " + error);
+            console.log("Error on get etDescriptionFlightOnModal: " + error);
 
         });
     };
@@ -148,7 +150,7 @@ appFlightBoard.controller("FlightBoardCtrl", function ($scope, $http, ModalServi
 appFlightBoard.controller('ModalController', function ($scope, close) {
 
     $scope.close = function (result) {
-        close(result, 500); // close, but give 500ms for bootstrap to animate
+        close(result, 500); 
     };
 
 });
